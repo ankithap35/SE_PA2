@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :movie
-  root :to => redirect('/movies')
+  root to: redirect("/movies")
 end
