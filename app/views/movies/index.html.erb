@@ -2,29 +2,41 @@
 
 <% content_for :title, "Movies" %>
 
-<h1>Movies</h1>
+<h1 class="h1-title">Movies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Rating</th>
-      <th>Release Date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.rating %></td>
-        <td><%= movie.release_date.strftime("%d-%b-%Y") %></td>
-        <td>
-          <%= link_to "Show this movie", movie %>
-        </td>
+<div id="movies">
+  <table>
+    <thead>
+      <tr class="tr-head">
+        <th class="<%= session[:sort] == 'title' ? 'sorted-th-asc' : '' %>">
+          <%= sortable "title", "Title" %>
+        </th>
+        <th class="<%= session[:sort] == 'rating' ? 'sorted-th-asc' : '' %>">
+          <%= sortable "rating", "Rating" %>
+        </th>
+        <th class="<%= session[:sort] == 'release_date' ? 'sorted-th-asc' : '' %>">
+          <%= sortable "release_date", "Release Date" %>
+        </th>
+        <th>Actions</th> <!-- Add this header for the actions column -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @movies.each_with_index do |movie, index| %>
+        <tr class="tr-body <%= index.even? ? 'tr-body-even' : 'tr-body-odd' %>">
+          <td><%= link_to movie.title, edit_movie_path(movie) %></td>
+          <td class="calign"><%= movie.rating %></td>
+          <td><%= movie.release_date %></td>
+          <td>
+            <%= link_to "Show this movie", movie_path(movie), class: 'button-link' %> <!-- Add the link here -->
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= link_to "New movie", new_movie_path %>
+<br>
+
+<div class="div-link">
+  <%= link_to "New movie", new_movie_path %>
+</div>

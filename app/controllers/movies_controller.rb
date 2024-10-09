@@ -1,9 +1,16 @@
 class MoviesController < ApplicationController
+  include MoviesHelper
   before_action :set_movie, only: %i[ show edit update destroy ]
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    session[:sort] = params[:sort] if params[:sort].present?
+    session[:direction] = params[:direction] if params[:direction].present?
+
+    sort_column = session[:sort] || 'title'
+    sort_direction = session[:direction] || 'asc'
+
+    @movies = Movie.order("#{sort_column} #{sort_direction}")
   end
 
   # GET /movies/1 or /movies/1.json
