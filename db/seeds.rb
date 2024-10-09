@@ -15,9 +15,9 @@ more_movies = [
   { title: 'Parasite', rating: 'R', release_date: '30-May-2019' },
   { title: 'Nomadland', rating: 'R', release_date: '19-Feb-2021' },
   { title: 'CODA', rating: 'PG-13', release_date: '13-Aug-2021' },
-  { title: 'The Shawshank Redemption', rating: 'R', release_date: '14-Oct-1994' }, # Added comma here
-  { title: 'The Dark Knight', rating: 'PG-13', release_date: '18-Jul-2008' }, # Added comma here
-  { title: 'The Godfather', rating: 'R', release_date: '24-Mar-1972' } # Added comma here
+  { title: 'New Movie 1', rating: 'R', release_date: '14-Oct-1994' },
+  { title: 'New Movie 2', rating: 'PG-13', release_date: '18-Jul-2008' },
+  { title: 'New Movie 3', rating: 'R', release_date: '24-Mar-1972' },
 ]
 
 more_movies.each do |movie|
