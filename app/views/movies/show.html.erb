@@ -1,10 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
+<div class="movie-card">
+  <h2 class="movie-title"><%= @movie.title %></h2>
 
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
+  <div class="movie-details">
+    <p><strong>Rating:</strong> <%= @movie.rating %></p>
+    <p><strong>Release Date:</strong> <%= @movie.release_date.strftime('%d %B %Y') %></p>
+    <p><strong>Description:</strong> <%= @movie.description %></p>
+  </div>
+</div>
 
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+<div class="movie-actions">
+  <%= link_to "Edit this movie", edit_movie_path(@movie), class: "btn btn-edit" %> |
+  <%= link_to "Back to movies", movies_path(sort: session[:sort], direction: session[:direction]), class: "btn btn-back" %>
+  
+  <%= button_to "Destroy this movie", @movie, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete" %>
 </div>

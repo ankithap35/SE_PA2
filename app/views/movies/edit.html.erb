@@ -1,12 +1,12 @@
 <% content_for :title, "Editing movie" %>
 
-<h1>Editing movie</h1>
+<h1 class="page-title">Editing Movie</h1>
 
-<%= render "form", movie: @movie %>
+<div class="form-container">
+  <%= render "form", movie: @movie %>
+</div>
 
-<br>
-
-<div>
-  <%= link_to "Show this movie", @movie %> |
-  <%= link_to "Back to movies", movies_path %>
+<div class="action-links">
+  <%= link_to "Show movie", @movie, class: "btn btn-back" %> |
+  <%= link_to "Back to movies", movies_path(sort: session[:sort], direction: session[:direction]), class: "btn btn-back" %>
 </div>

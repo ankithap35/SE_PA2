@@ -2,41 +2,44 @@
 
 <% content_for :title, "Movies" %>
 
-<h1 class="h1-title">Movies</h1>
+<h1>Movies</h1>
 
 <div id="movies">
   <table>
     <thead>
-      <tr class="tr-head">
-        <th class="<%= session[:sort] == 'title' ? 'sorted-th-asc' : '' %>">
-          <%= sortable "title", "Title" %>
+      <tr>
+        <th class="<%= sort_order('title') %>">
+          <%= link_to "Title #{sort_helper('title')}".html_safe, { sort: "title", direction: sort_direction("title") } %>
         </th>
-        <th class="<%= session[:sort] == 'rating' ? 'sorted-th-asc' : '' %>">
-          <%= sortable "rating", "Rating" %>
+        <th class="<%= sort_order('rating') %>">
+          <%= link_to "Rating #{sort_helper('rating')}".html_safe, { sort: "rating", direction: sort_direction("rating") } %>
         </th>
-        <th class="<%= session[:sort] == 'release_date' ? 'sorted-th-asc' : '' %>">
-          <%= sortable "release_date", "Release Date" %>
+        <th class="<%= sort_order('release_date') %>">
+          <%= link_to "Release Date #{sort_helper('release_date')}".html_safe, { sort: "release_date", direction: sort_direction("release_date") } %>
         </th>
-        <th>Actions</th> <!-- Add this header for the actions column -->
+        <th>Actions</th>
       </tr>
     </thead>
-    <tbody>
-      <% @movies.each_with_index do |movie, index| %>
-        <tr class="tr-body <%= index.even? ? 'tr-body-even' : 'tr-body-odd' %>">
-          <td><%= link_to movie.title, edit_movie_path(movie) %></td>
-          <td class="calign"><%= movie.rating %></td>
-          <td><%= movie.release_date %></td>
-          <td>
-            <%= link_to "Show this movie", movie_path(movie), class: 'button-link' %> <!-- Add the link here -->
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date.strftime('%d %B %Y') %></td>
+        <td>
+          <%= link_to "Show movie", movie %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="4">
+        <%= link_to "New movie", new_movie_path %>
+      </td>
+    </tr>
+    </tfoot>
   </table>
-</div>
-
-<br>
-
-<div class="div-link">
-  <%= link_to "New movie", new_movie_path %>
 </div>
