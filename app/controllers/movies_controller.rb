@@ -13,7 +13,6 @@ class MoviesController < ApplicationController
 
     session[:sort] = sort_by
     session[:direction] = sort_direction
-
   end
 
   # GET /movies/1 or /movies/1.json

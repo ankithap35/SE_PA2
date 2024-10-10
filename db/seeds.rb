@@ -18,7 +18,7 @@ more_movies = [
   # { title: 'CODA', rating: 'PG-13', release_date: '13-Aug-2021' },
   # { title: 'New Movie 1', rating: 'R', release_date: '14-Oct-1994' },
   # { title: 'New Movie 2', rating: 'PG-13', release_date: '18-Jul-2008' },
-  { title: 'Oppenheimer', rating: 'R', release_date: '24-Mar-1972' },
+  { title: 'Oppenheimer', rating: 'R', release_date: '24-Mar-1972' }
 ]
 
 more_movies.each do |movie|

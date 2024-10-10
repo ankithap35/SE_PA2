@@ -10,7 +10,7 @@ module MoviesHelper
             ""
         end
     end
-  
+
     def sort_helper(column)
       if params[:sort] == column
           params[:direction] == "asc" ? "▲" : "▼"
@@ -19,4 +19,3 @@ module MoviesHelper
       end
     end
 end
-  
