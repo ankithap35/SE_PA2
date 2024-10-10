@@ -246,6 +246,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sortable (0.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -317,15 +318,13 @@ DEPENDENCIES
   rails (~> 7.2.1)
   rubocop-rails-omakase
   selenium-webdriver
+  sortable
   sprockets-rails
   sqlite3
   stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
-
-RUBY VERSION
-   ruby 3.3.2p78
 
 BUNDLED WITH
    2.5.18
