@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :movie
+  resources :movies
   root to: redirect("/movies")
 end
